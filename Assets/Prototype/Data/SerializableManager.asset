@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b4e27dc1486a742ba5be3c6cb1000f, type: 3}
+  m_Name: SerializableManager
+  m_EditorClassIdentifier: 
+  moveButtons:
+  - <Type>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 112406320790019704, guid: 6e74ba5a4c92d4a44abc3027ab8a9eb8, type: 3}
+  - <Type>k__BackingField: 1
+    <Prefab>k__BackingField: {fileID: 345295785499223997, guid: 380acb850e9dfaf4b83c3fee940da59d, type: 3}
+  - <Type>k__BackingField: 2
+    <Prefab>k__BackingField: {fileID: 4477932855258794648, guid: 6d6b8e64154d472418e24f94e7db1c76, type: 3}
