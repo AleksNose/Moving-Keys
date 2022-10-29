@@ -1,5 +1,5 @@
 {
-    "name": "InputManager",
+    "name": "InputActions",
     "maps": [
         {
             "name": "Land",
@@ -29,7 +29,7 @@
                     "id": "382bb5a1-492b-4577-a156-9c0eafd56fd2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
