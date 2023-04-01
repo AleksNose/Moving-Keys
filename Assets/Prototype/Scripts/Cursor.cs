@@ -1,5 +1,3 @@
-using System;
-using UnityEditor.U2D.Path;
 using UnityEngine;
 
 public class Cursor : MonoBehaviour
