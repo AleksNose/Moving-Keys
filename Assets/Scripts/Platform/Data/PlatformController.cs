@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Platform
+namespace Platform.Data
 {
 	public class PlatformController : MonoBehaviour
 	{

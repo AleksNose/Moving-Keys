@@ -24,28 +24,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     ""name"": ""InputActions"",
     ""maps"": [
         {
-            ""name"": ""New action map"",
-            ""id"": ""4799530a-e00e-43e2-8b2b-faaea964bfa1"",
+            ""name"": ""Platform"",
+            ""id"": ""a4df5a26-65eb-4c05-8d42-3a3d2d76c373"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Mouse"",
                     ""type"": ""Button"",
-                    ""id"": ""68ae8f8b-6e3d-46af-a455-0ae52d6a9db7"",
+                    ""id"": ""9cc85dc3-4316-4577-aa54-84ca30bd7609"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""99a80f5a-6365-436f-bc38-d99cd7dae736"",
-                    ""path"": """",
+                    ""id"": ""1c476fc6-7370-4886-9207-c07e72de72e6"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -54,9 +54,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // New action map
-        m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
-        m_Newactionmap_Newaction = m_Newactionmap.FindAction("New action", throwIfNotFound: true);
+        // Platform
+        m_Platform = asset.FindActionMap("Platform", throwIfNotFound: true);
+        m_Platform_Mouse = m_Platform.FindAction("Mouse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -113,40 +113,40 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // New action map
-    private readonly InputActionMap m_Newactionmap;
-    private INewactionmapActions m_NewactionmapActionsCallbackInterface;
-    private readonly InputAction m_Newactionmap_Newaction;
-    public struct NewactionmapActions
+    // Platform
+    private readonly InputActionMap m_Platform;
+    private IPlatformActions m_PlatformActionsCallbackInterface;
+    private readonly InputAction m_Platform_Mouse;
+    public struct PlatformActions
     {
         private @InputActions m_Wrapper;
-        public NewactionmapActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Newactionmap_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_Newactionmap; }
+        public PlatformActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Mouse => m_Wrapper.m_Platform_Mouse;
+        public InputActionMap Get() { return m_Wrapper.m_Platform; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(NewactionmapActions set) { return set.Get(); }
-        public void SetCallbacks(INewactionmapActions instance)
+        public static implicit operator InputActionMap(PlatformActions set) { return set.Get(); }
+        public void SetCallbacks(IPlatformActions instance)
         {
-            if (m_Wrapper.m_NewactionmapActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlatformActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_NewactionmapActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_NewactionmapActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_NewactionmapActionsCallbackInterface.OnNewaction;
+                @Mouse.started -= m_Wrapper.m_PlatformActionsCallbackInterface.OnMouse;
+                @Mouse.performed -= m_Wrapper.m_PlatformActionsCallbackInterface.OnMouse;
+                @Mouse.canceled -= m_Wrapper.m_PlatformActionsCallbackInterface.OnMouse;
             }
-            m_Wrapper.m_NewactionmapActionsCallbackInterface = instance;
+            m_Wrapper.m_PlatformActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Mouse.started += instance.OnMouse;
+                @Mouse.performed += instance.OnMouse;
+                @Mouse.canceled += instance.OnMouse;
             }
         }
     }
-    public NewactionmapActions @Newactionmap => new NewactionmapActions(this);
-    public interface INewactionmapActions
+    public PlatformActions @Platform => new PlatformActions(this);
+    public interface IPlatformActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnMouse(InputAction.CallbackContext context);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Platform
+namespace Platform.Data
 {
 	[CreateAssetMenu(menuName = "MovePlatform/Platform/PlatformDatabase")]
 	public class PlatformDatabase : ScriptableObject

@@ -2,28 +2,28 @@
     "name": "InputActions",
     "maps": [
         {
-            "name": "New action map",
-            "id": "4799530a-e00e-43e2-8b2b-faaea964bfa1",
+            "name": "Platform",
+            "id": "a4df5a26-65eb-4c05-8d42-3a3d2d76c373",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Mouse",
                     "type": "Button",
-                    "id": "68ae8f8b-6e3d-46af-a455-0ae52d6a9db7",
+                    "id": "9cc85dc3-4316-4577-aa54-84ca30bd7609",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "99a80f5a-6365-436f-bc38-d99cd7dae736",
-                    "path": "",
+                    "id": "1c476fc6-7370-4886-9207-c07e72de72e6",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Mouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
