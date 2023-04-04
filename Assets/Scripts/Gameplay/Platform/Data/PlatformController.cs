@@ -5,7 +5,6 @@ namespace Gameplay.Platform.Data
 	public class PlatformController
 	{
 		public MoveType Key { get; set; }
-		public PlatformData CurrentPlatformData => PlatformDatabaseDict[Key];
 		public Dictionary<MoveType, PlatformData> PlatformDatabaseDict { get; set; }
 		
 		public void SetupPlatformData (PlatformDatabase PlatformDatabase)

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player
 {
-	public class Player : MonoBehaviour
+	public class PlayerMovement : MonoBehaviour
 	{
 		private const float SPEED = 5f;
 
@@ -16,10 +16,9 @@ namespace Player
 
 		private Dictionary<MoveType, float> OperationMove = new();
 
-		private void Awake ()
+		public void Initialize (PlayerMovementToggle playerMovementToggle)
 		{
-			PlayerMovementToggle = new();
-			PlayerMovementToggle.Initialize();
+			PlayerMovementToggle = playerMovementToggle;
 			PlayerMovementToggle.OnMoveChange += CheckCanMove;
 			
 			OperationMove.Add(MoveType.Left, 0f);
@@ -35,8 +34,8 @@ namespace Player
 
 		private void Move ()
 		{
-			var right = OperationMove[MoveType.Right];
-			var left = -1 * OperationMove[MoveType.Left];
+			var right = OperationMove[MoveType.Right] * (PlayerMovementToggle.InputActions.Movement.Right.IsPressed() ? 1f : 0f);
+			var left = -1 * OperationMove[MoveType.Left] * (PlayerMovementToggle.InputActions.Movement.Left.IsPressed() ? 1f : 0f);
 			
 			Rigidbody2D.velocity = new Vector2(( right + left) * SPEED, Rigidbody2D.velocity.y);
 		}

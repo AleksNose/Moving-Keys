@@ -12,8 +12,8 @@ namespace Gameplay.Platform.Data
 
 		[field: SerializeField] 
 		public GameObject Platform { get; set; }
-		
-		public bool IsSpawn => SpawnedPlatform != null;
+
+		public bool IsSpawn { get; set; }
 		private GameObject SpawnedPlatform { get; set; }
 
 		public void SpawnOrDestroyPlatform ()
@@ -21,11 +21,13 @@ namespace Gameplay.Platform.Data
 			if (IsSpawn == false)
 			{
 				SpawnedPlatform = Instantiate(Platform);
+				IsSpawn = true;
 			}
 			else
 			{
 				Destroy(SpawnedPlatform);
 				SpawnedPlatform = null;
+				IsSpawn = false;
 			}
 		}
 	}

@@ -8,11 +8,13 @@ namespace Gameplay.Player
 	public class PlayerMovementToggle
 	{
 		public event Action<MoveType, float> OnMoveChange = delegate { };
-		private InputActions InputActions { get; set; }
+		public InputActions InputActions { get; set; }
+
 		private PlatformController PlatformController { get; set; }
 
-		public void Initialize ()
+		public void Initialize (PlatformController platformController)
 		{
+			PlatformController = platformController;
 			InputActions = new();
 			InputActions.Enable();
 			AttachEvents();
