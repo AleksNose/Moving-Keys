@@ -1,5 +1,5 @@
-using Platform;
-using Platform.Data;
+using Gameplay.Platform;
+using Gameplay.Platform.Data;
 using UnityEngine;
 
 namespace UI.Platform
@@ -7,15 +7,19 @@ namespace UI.Platform
 	public class PlatformButtonController : MonoBehaviour
 	{
 		[field: SerializeField] 
-		private MoveType Type;
-		
-		[field: SerializeField]
+		private MoveType Type { get; set; }
+
 		private PlatformController PlatformController { get; set; }
+
+		public void Initialize (PlatformController platformController)
+		{
+			PlatformController = platformController;
+		}
 
 		public void OnClick ()
 		{
 			PlatformController.Key = Type;
-			PlatformController.CurrentPlatformData.SpawnOrDestroyPlatform();
+			PlatformController.PlatformDatabaseDict[Type].SpawnOrDestroyPlatform();
 		}
 	}
 }

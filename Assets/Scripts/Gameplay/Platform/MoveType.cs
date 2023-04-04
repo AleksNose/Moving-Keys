@@ -1,4 +1,4 @@
-﻿namespace Platform
+﻿namespace Gameplay.Platform
 {
 	public enum MoveType
 	{
