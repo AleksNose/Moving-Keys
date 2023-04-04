@@ -1,5 +1,5 @@
-using Platform;
-using Platform.Data;
+using Gameplay.Platform;
+using Gameplay.Platform.Data;
 using UnityEngine;
 
 namespace UI.Platform

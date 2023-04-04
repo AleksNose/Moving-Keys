@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Platform.Data
+namespace Gameplay.Platform.Data
 {
 	[Serializable]
 	[CreateAssetMenu(menuName = "MovePlatform/Platform/PlatformData")]
@@ -13,8 +13,8 @@ namespace Platform.Data
 		[field: SerializeField] 
 		public GameObject Platform { get; set; }
 		
+		public bool IsSpawn => SpawnedPlatform != null;
 		private GameObject SpawnedPlatform { get; set; }
-		private bool IsSpawn => SpawnedPlatform != null;
 
 		public void SpawnOrDestroyPlatform ()
 		{
