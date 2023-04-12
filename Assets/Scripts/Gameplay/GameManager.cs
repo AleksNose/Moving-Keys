@@ -29,9 +29,9 @@ namespace Gameplay
 		{
 			PlatformController = new();
 			PlayerMovementToggle = new();
+			PlayerMovement.Initialize(PlayerMovementToggle);
 			PlatformController.SetupPlatformData(PlatformDatabase);
 			PlayerMovementToggle.Initialize(PlatformController);
-			PlayerMovement.Initialize(PlayerMovementToggle);
 
 			foreach (var button in UIManager.PlatformButtonControllers)
 			{

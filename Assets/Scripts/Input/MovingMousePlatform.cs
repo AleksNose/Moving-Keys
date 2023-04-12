@@ -3,10 +3,13 @@ using UnityEngine.InputSystem;
 
 public class MovingMousePlatform : MonoBehaviour
 {
-	private const float SPEED = 5f;
+	private const float SPEED = 80f;
 	[field: SerializeField] private Camera Camera;
 
 	private InputActions InputAction;
+	private GameObject dragObject;
+
+	private bool isDrag { get; set; }
 
 	public void Awake ()
 	{
@@ -14,22 +17,39 @@ public class MovingMousePlatform : MonoBehaviour
 		InputAction.Enable();
 	}
 
-// 	private void FixedUpdate ()
-// 	{
-// 		RaycastHit2D hit2D = Physics2D.Raycast(Camera.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero);
-// 		GameObject gameObject = hit2D.collider.gameObject;
-//
-// 		gameObject.TryGetComponent<Rigidbody2D>(out var rigid);
-//
-// 		while (InputAction.Platform.Mouse.IsPressed())
-// 		{
-// 			Vector3 mousePos = Camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-// 			mousePos.z = 0f;
-//
-// 			Vector3.MoveTowards(gameObject.transform.position, mousePos, 1f);
-// 			Vector2 direction = (Vector2)(mousePos - gameObject.transform.position);
-// 			direction.Normalize();
-// 			rigid.velocity = direction * SPEED;
-// 		}
-// 	}
+	private void FixedUpdate ()
+	{
+		DragObject();
+
+		if (dragObject != null)
+		{
+			MoveObject(dragObject);
+		}
+	}
+
+	private void DragObject ()
+	{
+		RaycastHit2D hit2D = Physics2D.Raycast(Camera.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero);
+		if (hit2D.collider != null && hit2D.collider.gameObject.tag == "Platform")
+		{
+			dragObject = hit2D.collider.gameObject;
+			isDrag = true;
+		}
+	}
+
+	private void MoveObject (GameObject gameObject)
+	{
+		if (isDrag && InputAction.Platform.Mouse.IsPressed())
+		{
+			Vector3 mousePos = Camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+			gameObject.transform.position = new Vector3((int) mousePos.x, (int)mousePos.y, 0f);
+		}
+		else
+		{
+			isDrag = false;
+		}
+		
+		gameObject.GetComponent<BoxCollider2D>().isTrigger = isDrag;
+		gameObject.GetComponent<Platform>().IsDrag = isDrag;
+	}
 }
